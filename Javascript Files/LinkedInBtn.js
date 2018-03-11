@@ -78,6 +78,7 @@ class LinkedInBtn extends React.Component{
                         this.redirect(user);
                     })
                     .catch(err => {
+                        //If there was an error pass it back to the parent function                        
                         this.props.loginError(err.response.data.message);
                     });
                 });
@@ -86,6 +87,7 @@ class LinkedInBtn extends React.Component{
     }
 
     render() {
+        //Changes the button text from sign in to sign up depending on if it's the registration or login page            
         let isLogin = this.props.selectedRole === null ? 'in' : 'up';
         return (
             <button type="button" className="btn btn-lg btn-block btn-login-li" onClick={this.handleLinkedInClick}>
@@ -96,15 +98,17 @@ class LinkedInBtn extends React.Component{
 }
 
 function mapStateToProps(state){
+    //Lets us get the user information from redux
     return { 
         user: state.user
     }
 }
 
 function mapDispatchToProps(dispatch){
-    // Whenever selectBook is called, the result should be passed
-    // to all reducers
+    //Lets us set the current user information in redux
     return bindActionCreators({ createUser}, dispatch)
 }
 
+//withRouter - used for redirection using props.router.push
+//connect - lets the class connect to redux to get/set the user info
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(LinkedInBtn));
