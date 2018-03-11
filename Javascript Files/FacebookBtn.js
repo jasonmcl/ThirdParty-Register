@@ -98,7 +98,7 @@ class FacebookBtn extends React.Component {
                 })
                 .catch(err => {
                     //If there was an error pass it back to the parent function
-                    this.props.loginError(err.response.data.message);
+                    this.props.loginError(err);
                 });
             }
         }, {
@@ -131,6 +131,7 @@ function mapDispatchToProps(dispatch){
     //Lets us set the current user information in redux
     return bindActionCreators({ createUser}, dispatch)
 }
+
 //withRouter - used for redirection using props.router.push
 //connect - lets the class connect to redux to get/set the user info
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(FacebookBtn));

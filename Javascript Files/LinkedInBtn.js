@@ -79,7 +79,7 @@ class LinkedInBtn extends React.Component{
                     })
                     .catch(err => {
                         //If there was an error pass it back to the parent function                        
-                        this.props.loginError(err.response.data.message);
+                        this.props.loginError(err);
                     });
                 });
             }
