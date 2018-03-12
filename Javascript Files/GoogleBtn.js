@@ -44,7 +44,7 @@ class GoogleBtn extends React.Component{
             }
         }
         //The the user doesn't have the admin dashboard, redirect them to the regular user dashboard
-        if (user.roles[user.roleslength-1] !== "Admin" ) {
+        if (user.roles[user.roles.length-1] !== "Admin" ) {
             this.props.router.push('/userdashboard');
         }
     }
